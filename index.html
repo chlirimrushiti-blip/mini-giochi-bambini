@@ -1,0 +1,995 @@
+!DOCTYPE html
+html lang=it
+head
+  meta charset=UTF-8 
+  titleMini Giochi per Bambini 6+title
+
+  !-- PWA --
+  link rel=manifest href=manifest.webmanifest
+  link rel=icon type=imagesvg+xml href=icon.svg
+  meta name=theme-color content=#4e7cff
+
+  style
+     {
+      box-sizing border-box;
+    }
+
+    body {
+      margin 0;
+      font-family Comic Sans MS, Poppins, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background radial-gradient(circle at top, #ffe29f 0%, #ffa99f 45%, #67b5ff 100%);
+      display flex;
+      flex-direction column;
+      align-items center;
+      min-height 100vh;
+      padding 20px 10px 40px;
+    }
+
+    .app-container {
+      width 100%;
+      max-width 900px;
+    }
+
+    h1 {
+      text-align center;
+      font-size 2.4rem;
+      margin 0;
+      color #ffffff;
+      text-shadow 0 3px 0 #f48f3b, 0 6px 10px rgba(0,0,0,0.2);
+    }
+
+    .subtitle {
+      text-align center;
+      margin 6px 0 18px;
+      font-size 0.95rem;
+      color #fff9f3;
+    }
+
+    .badge {
+      display inline-flex;
+      align-items center;
+      gap 6px;
+      background rgba(255,255,255,0.18);
+      padding 6px 12px;
+      border-radius 999px;
+      border 1px solid rgba(255,255,255,0.5);
+      font-size 0.8rem;
+      color #fff;
+      backdrop-filter blur(8px);
+    }
+
+    .badge span {
+      font-weight bold;
+    }
+
+    .menu-card {
+      margin 0 auto 20px;
+      padding 16px 14px 14px;
+      border-radius 24px;
+      background rgba(255,255,255,0.86);
+      box-shadow 0 10px 30px rgba(0,0,0,0.16);
+      border 2px solid #ffe5f6;
+    }
+
+    .menu-title {
+      text-align center;
+      font-weight bold;
+      margin-bottom 6px;
+      color #ff7a00;
+    }
+
+    .small-text {
+      font-size 0.82rem;
+      color #777;
+      text-align center;
+      margin-bottom 10px;
+    }
+
+    .menu {
+      display flex;
+      flex-wrap wrap;
+      justify-content center;
+      gap 8px;
+      margin-bottom 6px;
+    }
+
+    button {
+      padding 10px 16px;
+      border-radius 999px;
+      border none;
+      font-size 0.9rem;
+      font-weight 600;
+      background #ff9f1c;
+      color #fff;
+      box-shadow 0 4px 0 #cc7d00;
+      cursor pointer;
+      transition all 0.1s ease-in-out;
+      outline none;
+      white-space nowrap;
+    }
+
+    buttonhover {
+      background #ffb347;
+      transform translateY(-2px);
+      box-shadow 0 5px 0 #cc7d00;
+    }
+
+    buttonactive {
+      transform translateY(2px);
+      box-shadow 0 2px 0 #cc7d00;
+    }
+
+    .game {
+      width 100%;
+      max-width 900px;
+      background #ffffff;
+      border-radius 26px;
+      padding 18px 16px 20px;
+      margin 0 auto 22px;
+      box-shadow 0 14px 35px rgba(0,0,0,0.18);
+      border 3px solid #ffe5f6;
+      animation fadeIn 0.3s ease-out;
+    }
+
+    .game h2 {
+      margin-top 0;
+      text-align center;
+      font-size 1.4rem;
+      color #444;
+      text-shadow 0 1px 0 #fff;
+    }
+
+    .hidden {
+      display none;
+    }
+
+    .center {
+      text-align center;
+    }
+
+    .tag {
+      display inline-block;
+      font-size 0.75rem;
+      padding 3px 8px;
+      border-radius 999px;
+      background #f0f3ff;
+      color #4e7cff;
+      margin-bottom 6px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity 0; transform translateY(8px); }
+      to   { opacity 1; transform translateY(0); }
+    }
+
+     Gioco 1 Acchiappa l’Animale 
+    #catch-area {
+      position relative;
+      width 100%;
+      max-width 500px;
+      height 260px;
+      margin 12px auto 0;
+      border-radius 20px;
+      background linear-gradient(135deg, #e3f7ff, #fff8d1);
+      overflow hidden;
+      border 2px dashed #4e7cff;
+    }
+    .target {
+      position absolute;
+      width 70px;
+      height 70px;
+      border-radius 50%;
+      background #fff;
+      display flex;
+      align-items center;
+      justify-content center;
+      font-size 34px;
+      cursor pointer;
+      user-select none;
+      box-shadow 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+     Gioco 2 Draw App 
+    #draw-canvas {
+      border 3px solid #ffb347;
+      border-radius 18px;
+      background #ffffff;
+      display block;
+      margin 12px auto 4px;
+      touch-action none;
+      box-shadow 0 6px 16px rgba(0,0,0,0.18);
+    }
+    .color-picker {
+      display flex;
+      gap 8px;
+      justify-content center;
+      margin 6px 0 8px;
+    }
+    .color-btn {
+      width 26px;
+      height 26px;
+      border-radius 50%;
+      border 3px solid #fff;
+      cursor pointer;
+      box-shadow 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+     Gioco 3 Puzzle 2x2 
+    #puzzle-grid {
+      display grid;
+      grid-template-columns repeat(2, 88px);
+      grid-template-rows repeat(2, 88px);
+      gap 7px;
+      justify-content center;
+      margin 14px 0 8px;
+    }
+    .puzzle-piece {
+      display flex;
+      align-items center;
+      justify-content center;
+      font-size 1.6rem;
+      border-radius 18px;
+      color white;
+      cursor pointer;
+      user-select none;
+      box-shadow 0 6px 10px rgba(0,0,0,0.2);
+      border 2px solid rgba(255,255,255,0.8);
+    }
+
+     Gioco 4 Memory 
+    #memory-grid {
+      display grid;
+      grid-template-columns repeat(4, 68px);
+      grid-auto-rows 88px;
+      gap 8px;
+      justify-content center;
+      margin 14px 0 8px;
+    }
+    .memory-card {
+      background #4e7cff;
+      color white;
+      font-size 1.6rem;
+      display flex;
+      align-items center;
+      justify-content center;
+      border-radius 14px;
+      cursor pointer;
+      user-select none;
+      box-shadow 0 5px 10px rgba(0,0,0,0.25);
+    }
+    .memory-card.revealed {
+      background #fff8b3;
+      color #000;
+      border 2px solid #4e7cff;
+    }
+    .memory-card.matched {
+      background #7ed957;
+      color #000;
+      cursor default;
+      transform scale(0.96);
+    }
+
+     Gioco 5 Quiz 
+    #quiz-answers {
+      display flex;
+      flex-direction column;
+      gap 6px;
+      max-width 400px;
+      margin 10px auto;
+    }
+    #quiz-answers button {
+      width 100%;
+      justify-content center;
+      display inline-flex;
+    }
+
+     Gioco 6 Mangia la Frutta 
+    #fruit-area {
+      position relative;
+      width 100%;
+      max-width 420px;
+      height 270px;
+      margin 12px auto 0;
+      border-radius 22px;
+      background linear-gradient(180deg, #ffe9e3, #fff3d8);
+      border 2px solid #ff7f50;
+      overflow hidden;
+      box-shadow inset 0 0 18px rgba(0,0,0,0.06);
+    }
+    #basket {
+      position absolute;
+      bottom 12px;
+      width 80px;
+      height 40px;
+      border-radius 14px;
+      background #ff7f50;
+      display flex;
+      align-items center;
+      justify-content center;
+      color white;
+      font-size 1.4rem;
+      box-shadow 0 5px 10px rgba(0,0,0,0.25);
+    }
+    .fruit {
+      position absolute;
+      top -30px;
+      width 32px;
+      height 32px;
+      display flex;
+      align-items center;
+      justify-content center;
+      font-size 1.5rem;
+    }
+
+     Gioco 7 Forme 
+    #shapes-area {
+      display flex;
+      justify-content center;
+      gap 30px;
+      margin 14px 0 8px;
+    }
+    .shape {
+      width 86px;
+      height 86px;
+      position relative;
+      cursor pointer;
+    }
+    .circle {
+      border-radius 50%;
+      background #ff6b6b;
+      box-shadow 0 8px 14px rgba(0,0,0,0.3);
+    }
+    .square {
+      background #4ecdc4;
+      border-radius 18px;
+      box-shadow 0 8px 14px rgba(0,0,0,0.3);
+    }
+    .triangle {
+      width 0;
+      height 0;
+      border-left 43px solid transparent;
+      border-right 43px solid transparent;
+      border-bottom 86px solid #ffe66d;
+      margin-top 0;
+      filter drop-shadow(0 8px 14px rgba(0,0,0,0.3));
+    }
+    .shape-label {
+      position absolute;
+      bottom -20px;
+      width 100%;
+      text-align center;
+      font-size 0.75rem;
+      color #555;
+      text-shadow 0 1px 0 #fff;
+    }
+
+     Gioco 8 Xilofono 
+    #xilo-area {
+      display flex;
+      flex-direction column;
+      align-items center;
+      gap 7px;
+      margin 12px 0 4px;
+    }
+    .xilo-bar {
+      width 80%;
+      max-width 420px;
+      height 34px;
+      border-radius 16px;
+      background linear-gradient(90deg, #4e7cff, #9f7eff);
+      display flex;
+      align-items center;
+      justify-content center;
+      font-size 0.95rem;
+      color white;
+      cursor pointer;
+      user-select none;
+      box-shadow 0 7px 12px rgba(0,0,0,0.25);
+    }
+    .xilo-barnth-child(2) { background linear-gradient(90deg, #ff6b6b, #ff9f1c); }
+    .xilo-barnth-child(3) { background linear-gradient(90deg, #7ed957, #4ecdc4); }
+    .xilo-barnth-child(4) { background linear-gradient(90deg, #ffe66d, #ff9f1c); }
+    .xilo-barnth-child(5) { background linear-gradient(90deg, #ff9f1c, #ff6b81); }
+    .xilo-barnth-child(6) { background linear-gradient(90deg, #6a5acd, #9f7eff); }
+    .xilo-barnth-child(7) { background linear-gradient(90deg, #4ecdc4, #2ab7ca); }
+    .xilo-barnth-child(8) { background linear-gradient(90deg, #ff6b6b, #ff9f1c); }
+
+    @media (max-width 600px) {
+      h1 {
+        font-size 1.9rem;
+      }
+      .game {
+        padding 14px 10px 16px;
+      }
+      #draw-canvas {
+        width 100%;
+        height 260px;
+      }
+    }
+  style
+head
+body
+  div class=app-container
+    div style=text-aligncenter; margin-bottom 10px;
+      div class=badge
+        🎮 spanMini Giochispan educativi • 6+
+      div
+    div
+
+    h1Mini Giochi per Bambinih1
+    p class=subtitleUna piccola raccolta di giochi colorati per allenare mente, riflessi e creatività.p
+
+    !-- MENU CARD --
+    div class=menu-card
+      div class=menu-titleScegli il tuo giocodiv
+      p class=small-textTocca un pulsante per aprire il gioco corrispondente.p
+      div class=menu
+        button onclick=showGame('game-catch')🎯 Acchiappa l’Animalebutton
+        button onclick=showGame('game-draw')✏️ Disegnabutton
+        button onclick=showGame('game-puzzle')🧩 Puzzle 2x2button
+        button onclick=showGame('game-memory')🧠 Memorybutton
+        button onclick=showGame('game-quiz')❓ Quizbutton
+        button onclick=showGame('game-fruit')🍎 Mangia la Fruttabutton
+        button onclick=showGame('game-shapes')🔺 Formebutton
+        button onclick=showGame('game-xilo')🎵 Xilofonobutton
+      div
+    div
+
+    !-- GIOCO 1 ACCHIAPPA L’ANIMALE --
+    section id=game-catch class=game hidden
+      div class=centerspan class=tagRiflessispandiv
+      h2🎯 Acchiappa l’Animaleh2
+      p class=center small-textClicca l’animaletto il più veloce possibile in 30 secondi!p
+      div class=center style=margin-top 4px;
+        spanPunteggio strong id=catch-score0strongspan 
+        spanTempo strong id=catch-time30strongsspanbrbr
+        button onclick=startCatchGame()▶️ Iniziabutton
+      div
+      div id=catch-areadiv
+    section
+
+    !-- GIOCO 2 DRAW APP --
+    section id=game-draw class=game hidden
+      div class=centerspan class=tagCreativitàspandiv
+      h2✏️ Disegnah2
+      p class=center small-textDisegna liberamente. Funziona con mouse (PC) e dito (touch).p
+      div class=color-picker
+        div class=color-btn style=background#000000 onclick=setDrawColor('#000000')div
+        div class=color-btn style=background#ff0000 onclick=setDrawColor('#ff0000')div
+        div class=color-btn style=background#00aa00 onclick=setDrawColor('#00aa00')div
+        div class=color-btn style=background#0000ff onclick=setDrawColor('#0000ff')div
+        div class=color-btn style=background#ffa500 onclick=setDrawColor('#ffa500')div
+      div
+      div class=center style=margin-bottom 4px;
+        button onclick=clearCanvas()🧹 Cancellabutton
+      div
+      canvas id=draw-canvas width=500 height=300canvas
+    section
+
+    !-- GIOCO 3 PUZZLE 2x2 --
+    section id=game-puzzle class=game hidden
+      div class=centerspan class=tagLogicaspandiv
+      h2🧩 Puzzle 2x2h2
+      p class=center small-textClicca due tessere per scambiarle. Obiettivo 1, 2, 3, 4 in ordine.p
+      div class=center
+        button onclick=shufflePuzzle()🔀 Mescolabutton
+      div
+      div id=puzzle-griddiv
+      p class=center small-text id=puzzle-messagep
+    section
+
+    !-- GIOCO 4 MEMORY --
+    section id=game-memory class=game hidden
+      div class=centerspan class=tagMemoriaspandiv
+      h2🧠 Memoryh2
+      p class=center small-textTrova tutte le coppie uguali.p
+      div class=center
+        button onclick=startMemoryGame()🔁 Nuova Partitabutton
+      div
+      div id=memory-griddiv
+      p class=center small-text id=memory-messagep
+    section
+
+    !-- GIOCO 5 QUIZ --
+    section id=game-quiz class=game hidden
+      div class=centerspan class=tagConoscenzaspandiv
+      h2❓ Quiz per Bambinih2
+      p class=center small-textRispondi alle domande. Quante ne saip
+      div class=center
+        button onclick=startQuiz()▶️ Inizia Quizbutton
+      div
+      h3 id=quiz-question class=center style=min-height 40px; margin-top 12px;h3
+      div id=quiz-answersdiv
+      p class=center small-text id=quiz-scorep
+    section
+
+    !-- GIOCO 6 MANGIA LA FRUTTA --
+    section id=game-fruit class=game hidden
+      div class=centerspan class=tagCoordinazionespandiv
+      h2🍎 Mangia la Fruttah2
+      p class=center small-textMuovi il cestino con le frecce ← → e prendi la frutta, evita le bombe!p
+      div class=center style=margin-top 4px;
+        spanPunteggio strong id=fruit-score0strongspan
+        &nbsp;&nbsp;
+        button onclick=startFruitGame()▶️ Iniziabutton
+      div
+      div id=fruit-area
+        div id=basket🧺div
+      div
+      p class=center small-textSuggerimento tocca il riquadro per “dare il focus” prima di usare le frecce.p
+    section
+
+    !-- GIOCO 7 IMPARA LE FORME --
+    section id=game-shapes class=game hidden
+      div class=centerspan class=tagForme e spaziospandiv
+      h2🔺 Impara le Formeh2
+      p class=center small-textLeggi la richiesta e clicca la forma giusta.p
+      p class=centerstrong id=shapes-questionPremi Nuova per iniziare.strongp
+      div class=center style=margin-bottom4px;
+        button onclick=newShapeQuestion()🆕 Nuovabutton
+        span style=margin-left10px;font-size0.9rem;Punti strong id=shapes-score0strongspan
+      div
+      div id=shapes-area
+        div class=shape circle onclick=chooseShape('cerchio')
+          div class=shape-labelCerchiodiv
+        div
+        div class=shape square onclick=chooseShape('quadrato')
+          div class=shape-labelQuadratodiv
+        div
+        div class=shape triangle onclick=chooseShape('triangolo')
+          div class=shape-labelTriangolodiv
+        div
+      div
+      p class=center small-text id=shapes-messagep
+    section
+
+    !-- GIOCO 8 XILOFONO --
+    section id=game-xilo class=game hidden
+      div class=centerspan class=tagMusicaspandiv
+      h2🎵 Xilofonoh2
+      p class=center small-textClicca le barre per ascoltare le note.p
+      div id=xilo-area
+        div class=xilo-bar onclick=playNote(261)Dodiv
+        div class=xilo-bar onclick=playNote(293)Rediv
+        div class=xilo-bar onclick=playNote(329)Midiv
+        div class=xilo-bar onclick=playNote(349)Fadiv
+        div class=xilo-bar onclick=playNote(392)Soldiv
+        div class=xilo-bar onclick=playNote(440)Ladiv
+        div class=xilo-bar onclick=playNote(493)Sidiv
+        div class=xilo-bar onclick=playNote(523)Do Altodiv
+      div
+    section
+  div
+
+  script
+     --------- LOGICA GENERALE MENU --------- 
+    function showGame(gameId) {
+      document.querySelectorAll('.game').forEach(g = g.classList.add('hidden'));
+      const game = document.getElementById(gameId);
+      if (game) game.classList.remove('hidden');
+      window.scrollTo({ top 0, behavior 'smooth' });
+    }
+
+     --------- GIOCO 1 ACCHIAPPA L’ANIMALE --------- 
+    let catchScore = 0;
+    let catchTime = 30;
+    let catchTimerInterval = null;
+    let catchMoveInterval = null;
+
+    function startCatchGame() {
+      catchScore = 0;
+      catchTime = 30;
+      document.getElementById('catch-score').textContent = catchScore;
+      document.getElementById('catch-time').textContent = catchTime;
+
+      const area = document.getElementById('catch-area');
+      area.innerHTML = '';
+      const target = document.createElement('div');
+      target.className = 'target';
+      target.textContent = '🐶';
+      target.addEventListener('click', () = {
+        catchScore++;
+        document.getElementById('catch-score').textContent = catchScore;
+        moveTargetRandom(target);
+      });
+      area.appendChild(target);
+      moveTargetRandom(target);
+
+      if (catchTimerInterval) clearInterval(catchTimerInterval);
+      if (catchMoveInterval) clearInterval(catchMoveInterval);
+
+      catchTimerInterval = setInterval(() = {
+        catchTime--;
+        document.getElementById('catch-time').textContent = catchTime;
+        if (catchTime = 0) {
+          clearInterval(catchTimerInterval);
+          clearInterval(catchMoveInterval);
+          alert('Tempo finito! Punteggio ' + catchScore);
+        }
+      }, 1000);
+
+      catchMoveInterval = setInterval(() = {
+        moveTargetRandom(target);
+      }, 800);
+    }
+
+    function moveTargetRandom(target) {
+      const area = document.getElementById('catch-area');
+      const areaRect = area.getBoundingClientRect();
+      const size = 70;
+      const maxX = areaRect.width - size;
+      const maxY = areaRect.height - size;
+      const x = Math.random()  maxX;
+      const y = Math.random()  maxY;
+      target.style.left = x + 'px';
+      target.style.top = y + 'px';
+    }
+
+     --------- GIOCO 2 DRAW APP --------- 
+    const canvas = document.getElementById('draw-canvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let drawColor = '#000000';
+
+    function setDrawColor(color) {
+      drawColor = color;
+    }
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function getCanvasPos(evt) {
+      const rect = canvas.getBoundingClientRect();
+      let x, y;
+      if (evt.touches && evt.touches[0]) {
+        x = evt.touches[0].clientX - rect.left;
+        y = evt.touches[0].clientY - rect.top;
+      } else {
+        x = evt.clientX - rect.left;
+        y = evt.clientY - rect.top;
+      }
+      return { x, y };
+    }
+
+    function startDraw(evt) {
+      drawing = true;
+      const pos = getCanvasPos(evt);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+    function draw(evt) {
+      if (!drawing) return;
+      evt.preventDefault();
+      const pos = getCanvasPos(evt);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.strokeStyle = drawColor;
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+    }
+    function endDraw() {
+      drawing = false;
+      ctx.closePath();
+    }
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', endDraw);
+    canvas.addEventListener('mouseleave', endDraw);
+
+    canvas.addEventListener('touchstart', startDraw);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', endDraw);
+
+     --------- GIOCO 3 PUZZLE 2x2 --------- 
+    const puzzleGrid = document.getElementById('puzzle-grid');
+    let puzzlePieces = [1, 2, 3, 4];
+    let puzzleColors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#5f27cd'];
+    let firstSelectedIndex = null;
+
+    function renderPuzzle() {
+      puzzleGrid.innerHTML = '';
+      puzzlePieces.forEach((num, index) = {
+        const div = document.createElement('div');
+        div.className = 'puzzle-piece';
+        div.style.background = puzzleColors[num - 1];
+        div.textContent = num;
+        div.addEventListener('click', () = onPuzzleClick(index, div));
+        puzzleGrid.appendChild(div);
+      });
+      document.getElementById('puzzle-message').textContent = '';
+    }
+
+    function onPuzzleClick(index, element) {
+      if (firstSelectedIndex === null) {
+        firstSelectedIndex = index;
+        element.style.outline = '3px solid #000';
+      } else {
+        const pieces = document.querySelectorAll('.puzzle-piece');
+        pieces[firstSelectedIndex].style.outline = 'none';
+        [puzzlePieces[firstSelectedIndex], puzzlePieces[index]] = [puzzlePieces[index], puzzlePieces[firstSelectedIndex]];
+        firstSelectedIndex = null;
+        renderPuzzle();
+        checkPuzzleWin();
+      }
+    }
+
+    function checkPuzzleWin() {
+      if (JSON.stringify(puzzlePieces) === JSON.stringify([1,2,3,4])) {
+        document.getElementById('puzzle-message').textContent = 'Bravo! Puzzle completato! 🎉';
+      }
+    }
+
+    function shufflePuzzle() {
+      puzzlePieces = [1,2,3,4].sort(() = Math.random() - 0.5);
+      firstSelectedIndex = null;
+      renderPuzzle();
+      document.getElementById('puzzle-message').textContent = 'Puzzle mescolato!';
+    }
+    renderPuzzle();
+
+     --------- GIOCO 4 MEMORY --------- 
+    const memoryGrid = document.getElementById('memory-grid');
+    let memoryValues = [];
+    let memoryFirst = null;
+    let memoryLock = false;
+    let memoryMatches = 0;
+
+    function startMemoryGame() {
+      const icons = ['🍎','🍌','🍇','🍓'];
+      memoryValues = icons.concat(icons).sort(() = Math.random() - 0.5);
+      memoryGrid.innerHTML = '';
+      memoryFirst = null;
+      memoryLock = false;
+      memoryMatches = 0;
+      document.getElementById('memory-message').textContent = '';
+      memoryValues.forEach((val, idx) = {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.index = idx;
+        card.dataset.value = val;
+        card.textContent = '';
+        card.addEventListener('click', () = onMemoryClick(card));
+        memoryGrid.appendChild(card);
+      });
+    }
+
+    function onMemoryClick(card) {
+      if (memoryLock) return;
+      if (card.classList.contains('matched')) return;
+      if (card === memoryFirst) return;
+
+      card.classList.add('revealed');
+      card.textContent = card.dataset.value;
+
+      if (!memoryFirst) {
+        memoryFirst = card;
+      } else {
+        const second = card;
+        if (memoryFirst.dataset.value === second.dataset.value) {
+          memoryFirst.classList.add('matched');
+          second.classList.add('matched');
+          memoryMatches++;
+          document.getElementById('memory-message').textContent = 'Coppia trovata! ✅';
+          memoryFirst = null;
+          if (memoryMatches === memoryValues.length  2) {
+            document.getElementById('memory-message').textContent = 'Hai trovato tutte le coppie! 🎉';
+          }
+        } else {
+          memoryLock = true;
+          setTimeout(() = {
+            memoryFirst.classList.remove('revealed');
+            second.classList.remove('revealed');
+            memoryFirst.textContent = '';
+            second.textContent = '';
+            memoryFirst = null;
+            memoryLock = false;
+          }, 700);
+        }
+      }
+    }
+
+     --------- GIOCO 5 QUIZ --------- 
+    const quizQuestions = [
+      {
+        q 'Quanto fa 2 + 2',
+        answers ['3', '4', '5'],
+        correct 1
+      },
+      {
+        q 'Quale di questi è un animale',
+        answers ['Sedia', 'Cane', 'Palla'],
+        correct 1
+      },
+      {
+        q 'Di che colore è il cielo sereno',
+        answers ['Blu', 'Verde', 'Rosso'],
+        correct 0
+      },
+      {
+        q 'Quanti giorni ci sono in una settimana',
+        answers ['5', '7', '10'],
+        correct 1
+      }
+    ];
+    let quizIndex = 0;
+    let quizScore = 0;
+
+    function startQuiz() {
+      quizIndex = 0;
+      quizScore = 0;
+      document.getElementById('quiz-score').textContent = '';
+      showQuizQuestion();
+    }
+
+    function showQuizQuestion() {
+      if (quizIndex = quizQuestions.length) {
+        document.getElementById('quiz-question').textContent = 'Quiz finito!';
+        document.getElementById('quiz-answers').innerHTML = '';
+        document.getElementById('quiz-score').textContent = 'Punteggio ' + quizScore + '  ' + quizQuestions.length;
+        return;
+      }
+      const qObj = quizQuestions[quizIndex];
+      document.getElementById('quiz-question').textContent = qObj.q;
+      const answersDiv = document.getElementById('quiz-answers');
+      answersDiv.innerHTML = '';
+      qObj.answers.forEach((ans, idx) = {
+        const btn = document.createElement('button');
+        btn.textContent = ans;
+        btn.onclick = () = checkQuizAnswer(idx);
+        answersDiv.appendChild(btn);
+      });
+    }
+
+    function checkQuizAnswer(selected) {
+      const qObj = quizQuestions[quizIndex];
+      if (selected === qObj.correct) {
+        quizScore++;
+      }
+      quizIndex++;
+      showQuizQuestion();
+    }
+
+     --------- GIOCO 6 MANGIA LA FRUTTA --------- 
+    const fruitArea = document.getElementById('fruit-area');
+    const basket = document.getElementById('basket');
+    let basketX = 160;
+    let fruitScore = 0;
+    let fruitInterval = null;
+    let fruitFallInterval = null;
+    let fruits = [];
+
+    function setBasketPosition() {
+      const areaWidth = fruitArea.clientWidth;
+      if (basketX  0) basketX = 0;
+      if (basketX  areaWidth - 80) basketX = areaWidth - 80;
+      basket.style.left = basketX + 'px';
+    }
+    setBasketPosition();
+
+    document.addEventListener('keydown', (e) = {
+      if (document.getElementById('game-fruit').classList.contains('hidden')) return;
+      if (e.key === 'ArrowLeft') {
+        basketX -= 20;
+        setBasketPosition();
+      } else if (e.key === 'ArrowRight') {
+        basketX += 20;
+        setBasketPosition();
+      }
+    });
+
+    function startFruitGame() {
+      fruits.forEach(f = f.element.remove());
+      fruits = [];
+      fruitScore = 0;
+      document.getElementById('fruit-score').textContent = fruitScore;
+
+      if (fruitInterval) clearInterval(fruitInterval);
+      if (fruitFallInterval) clearInterval(fruitFallInterval);
+
+      fruitInterval = setInterval(spawnFruit, 800);
+      fruitFallInterval = setInterval(updateFruits, 50);
+    }
+
+    function spawnFruit() {
+      const isBomb = Math.random()  0.2;
+      const fruit = document.createElement('div');
+      fruit.className = 'fruit';
+      fruit.textContent = isBomb  '💣'  '🍎';
+      const areaWidth = fruitArea.clientWidth;
+      const x = Math.random()  (areaWidth - 32);
+      fruit.style.left = x + 'px';
+      fruitArea.appendChild(fruit);
+      fruits.push({ element fruit, y -30, isBomb });
+    }
+
+    function updateFruits() {
+      const areaHeight = fruitArea.clientHeight;
+      const basketRect = basket.getBoundingClientRect();
+      fruits.forEach(obj = {
+        obj.y += 4;
+        obj.element.style.top = obj.y + 'px';
+      });
+
+      fruits = fruits.filter(obj = {
+        const fruitRect = obj.element.getBoundingClientRect();
+        if (fruitRect.bottom = basketRect.top &&
+            fruitRect.left  basketRect.right &&
+            fruitRect.right  basketRect.left &&
+            fruitRect.bottom = basketRect.bottom + 20) {
+          obj.element.remove();
+          if (obj.isBomb) {
+            fruitScore -= 2;
+          } else {
+            fruitScore += 1;
+          }
+          document.getElementById('fruit-score').textContent = fruitScore;
+          return false;
+        }
+        if (obj.y  areaHeight) {
+          obj.element.remove();
+          return false;
+        }
+        return true;
+      });
+    }
+
+     --------- GIOCO 7 FORME --------- 
+    let currentShapeAnswer = null;
+    let shapesScore = 0;
+
+    function newShapeQuestion() {
+      const options = ['cerchio', 'quadrato', 'triangolo'];
+      currentShapeAnswer = options[Math.floor(Math.random()  options.length)];
+      document.getElementById('shapes-question').textContent =
+        'Clicca il ' + currentShapeAnswer + '!';
+      document.getElementById('shapes-message').textContent = '';
+    }
+
+    function chooseShape(choice) {
+      if (!currentShapeAnswer) return;
+      if (choice === currentShapeAnswer) {
+        document.getElementById('shapes-message').textContent = 'Bravo! ✅';
+        shapesScore++;
+        document.getElementById('shapes-score').textContent = shapesScore;
+        currentShapeAnswer = null;
+      } else {
+        document.getElementById('shapes-message').textContent = 'Ops, prova ancora. ❌';
+      }
+    }
+
+     --------- GIOCO 8 XILOFONO --------- 
+    let audioCtx = null;
+    function playNote(freq) {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext  window.webkitAudioContext)();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.5);
+    }
+  script
+
+  !-- PWA REGISTRA SERVICE WORKER --
+  script
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js')
+          .then(function (reg) {
+            console.log('Service worker registrato', reg.scope);
+          })
+          .catch(function (err) {
+            console.log('Service worker errore', err);
+          });
+      });
+    }
+  script
+body
+html
