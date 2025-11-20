@@ -1,576 +1,576 @@
-!DOCTYPE html
-html lang=it
-head
-  meta charset=UTF-8 
-  titleMini Giochi per Bambini 6+title
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Giochi per Bambini 6+</title>
 
-  !-- PWA --
-  link rel=manifest href=manifest.webmanifest
-  link rel=icon type=imagesvg+xml href=icon.svg
-  meta name=theme-color content=#4e7cff
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta name="theme-color" content="#4e7cff">
 
-  style
-     {
-      box-sizing border-box;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      margin 0;
-      font-family Comic Sans MS, Poppins, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background radial-gradient(circle at top, #ffe29f 0%, #ffa99f 45%, #67b5ff 100%);
-      display flex;
-      flex-direction column;
-      align-items center;
-      min-height 100vh;
-      padding 20px 10px 40px;
+      margin: 0;
+      font-family: "Comic Sans MS", "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #ffe29f 0%, #ffa99f 45%, #67b5ff 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px 10px 40px;
     }
 
     .app-container {
-      width 100%;
-      max-width 900px;
+      width: 100%;
+      max-width: 900px;
     }
 
     h1 {
-      text-align center;
-      font-size 2.4rem;
-      margin 0;
-      color #ffffff;
-      text-shadow 0 3px 0 #f48f3b, 0 6px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      font-size: 2.4rem;
+      margin: 0;
+      color: #ffffff;
+      text-shadow: 0 3px 0 #f48f3b, 0 6px 10px rgba(0,0,0,0.2);
     }
 
     .subtitle {
-      text-align center;
-      margin 6px 0 18px;
-      font-size 0.95rem;
-      color #fff9f3;
+      text-align: center;
+      margin: 6px 0 18px;
+      font-size: 0.95rem;
+      color: #fff9f3;
     }
 
     .badge {
-      display inline-flex;
-      align-items center;
-      gap 6px;
-      background rgba(255,255,255,0.18);
-      padding 6px 12px;
-      border-radius 999px;
-      border 1px solid rgba(255,255,255,0.5);
-      font-size 0.8rem;
-      color #fff;
-      backdrop-filter blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      color: #fff;
+      backdrop-filter: blur(8px);
     }
 
     .badge span {
-      font-weight bold;
+      font-weight: bold;
     }
 
     .menu-card {
-      margin 0 auto 20px;
-      padding 16px 14px 14px;
-      border-radius 24px;
-      background rgba(255,255,255,0.86);
-      box-shadow 0 10px 30px rgba(0,0,0,0.16);
-      border 2px solid #ffe5f6;
+      margin: 0 auto 20px;
+      padding: 16px 14px 14px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.86);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.16);
+      border: 2px solid #ffe5f6;
     }
 
     .menu-title {
-      text-align center;
-      font-weight bold;
-      margin-bottom 6px;
-      color #ff7a00;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #ff7a00;
     }
 
     .small-text {
-      font-size 0.82rem;
-      color #777;
-      text-align center;
-      margin-bottom 10px;
+      font-size: 0.82rem;
+      color: #777;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
     .menu {
-      display flex;
-      flex-wrap wrap;
-      justify-content center;
-      gap 8px;
-      margin-bottom 6px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 6px;
     }
 
     button {
-      padding 10px 16px;
-      border-radius 999px;
-      border none;
-      font-size 0.9rem;
-      font-weight 600;
-      background #ff9f1c;
-      color #fff;
-      box-shadow 0 4px 0 #cc7d00;
-      cursor pointer;
-      transition all 0.1s ease-in-out;
-      outline none;
-      white-space nowrap;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: #ff9f1c;
+      color: #fff;
+      box-shadow: 0 4px 0 #cc7d00;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+      outline: none;
+      white-space: nowrap;
     }
 
-    buttonhover {
-      background #ffb347;
-      transform translateY(-2px);
-      box-shadow 0 5px 0 #cc7d00;
+    button:hover {
+      background: #ffb347;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #cc7d00;
     }
 
-    buttonactive {
-      transform translateY(2px);
-      box-shadow 0 2px 0 #cc7d00;
+    button:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #cc7d00;
     }
 
     .game {
-      width 100%;
-      max-width 900px;
-      background #ffffff;
-      border-radius 26px;
-      padding 18px 16px 20px;
-      margin 0 auto 22px;
-      box-shadow 0 14px 35px rgba(0,0,0,0.18);
-      border 3px solid #ffe5f6;
-      animation fadeIn 0.3s ease-out;
+      width: 100%;
+      max-width: 900px;
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 18px 16px 20px;
+      margin: 0 auto 22px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+      border: 3px solid #ffe5f6;
+      animation: fadeIn 0.3s ease-out;
     }
 
     .game h2 {
-      margin-top 0;
-      text-align center;
-      font-size 1.4rem;
-      color #444;
-      text-shadow 0 1px 0 #fff;
+      margin-top: 0;
+      text-align: center;
+      font-size: 1.4rem;
+      color: #444;
+      text-shadow: 0 1px 0 #fff;
     }
 
     .hidden {
-      display none;
+      display: none;
     }
 
     .center {
-      text-align center;
+      text-align: center;
     }
 
     .tag {
-      display inline-block;
-      font-size 0.75rem;
-      padding 3px 8px;
-      border-radius 999px;
-      background #f0f3ff;
-      color #4e7cff;
-      margin-bottom 6px;
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f0f3ff;
+      color: #4e7cff;
+      margin-bottom: 6px;
     }
 
     @keyframes fadeIn {
-      from { opacity 0; transform translateY(8px); }
-      to   { opacity 1; transform translateY(0); }
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-     Gioco 1 Acchiappa l’Animale 
+    /* Gioco 1: Acchiappa l’Animale */
     #catch-area {
-      position relative;
-      width 100%;
-      max-width 500px;
-      height 260px;
-      margin 12px auto 0;
-      border-radius 20px;
-      background linear-gradient(135deg, #e3f7ff, #fff8d1);
-      overflow hidden;
-      border 2px dashed #4e7cff;
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 260px;
+      margin: 12px auto 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #e3f7ff, #fff8d1);
+      overflow: hidden;
+      border: 2px dashed #4e7cff;
     }
     .target {
-      position absolute;
-      width 70px;
-      height 70px;
-      border-radius 50%;
-      background #fff;
-      display flex;
-      align-items center;
-      justify-content center;
-      font-size 34px;
-      cursor pointer;
-      user-select none;
-      box-shadow 0 4px 10px rgba(0,0,0,0.2);
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-     Gioco 2 Draw App 
+    /* Gioco 2: Draw App */
     #draw-canvas {
-      border 3px solid #ffb347;
-      border-radius 18px;
-      background #ffffff;
-      display block;
-      margin 12px auto 4px;
-      touch-action none;
-      box-shadow 0 6px 16px rgba(0,0,0,0.18);
+      border: 3px solid #ffb347;
+      border-radius: 18px;
+      background: #ffffff;
+      display: block;
+      margin: 12px auto 4px;
+      touch-action: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
     }
     .color-picker {
-      display flex;
-      gap 8px;
-      justify-content center;
-      margin 6px 0 8px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 6px 0 8px;
     }
     .color-btn {
-      width 26px;
-      height 26px;
-      border-radius 50%;
-      border 3px solid #fff;
-      cursor pointer;
-      box-shadow 0 3px 6px rgba(0,0,0,0.2);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
 
-     Gioco 3 Puzzle 2x2 
+    /* Gioco 3: Puzzle 2x2 */
     #puzzle-grid {
-      display grid;
-      grid-template-columns repeat(2, 88px);
-      grid-template-rows repeat(2, 88px);
-      gap 7px;
-      justify-content center;
-      margin 14px 0 8px;
+      display: grid;
+      grid-template-columns: repeat(2, 88px);
+      grid-template-rows: repeat(2, 88px);
+      gap: 7px;
+      justify-content: center;
+      margin: 14px 0 8px;
     }
     .puzzle-piece {
-      display flex;
-      align-items center;
-      justify-content center;
-      font-size 1.6rem;
-      border-radius 18px;
-      color white;
-      cursor pointer;
-      user-select none;
-      box-shadow 0 6px 10px rgba(0,0,0,0.2);
-      border 2px solid rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      border-radius: 18px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255,255,255,0.8);
     }
 
-     Gioco 4 Memory 
+    /* Gioco 4: Memory */
     #memory-grid {
-      display grid;
-      grid-template-columns repeat(4, 68px);
-      grid-auto-rows 88px;
-      gap 8px;
-      justify-content center;
-      margin 14px 0 8px;
+      display: grid;
+      grid-template-columns: repeat(4, 68px);
+      grid-auto-rows: 88px;
+      gap: 8px;
+      justify-content: center;
+      margin: 14px 0 8px;
     }
     .memory-card {
-      background #4e7cff;
-      color white;
-      font-size 1.6rem;
-      display flex;
-      align-items center;
-      justify-content center;
-      border-radius 14px;
-      cursor pointer;
-      user-select none;
-      box-shadow 0 5px 10px rgba(0,0,0,0.25);
+      background: #4e7cff;
+      color: white;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.25);
     }
     .memory-card.revealed {
-      background #fff8b3;
-      color #000;
-      border 2px solid #4e7cff;
+      background: #fff8b3;
+      color: #000;
+      border: 2px solid #4e7cff;
     }
     .memory-card.matched {
-      background #7ed957;
-      color #000;
-      cursor default;
-      transform scale(0.96);
+      background: #7ed957;
+      color: #000;
+      cursor: default;
+      transform: scale(0.96);
     }
 
-     Gioco 5 Quiz 
+    /* Gioco 5: Quiz */
     #quiz-answers {
-      display flex;
-      flex-direction column;
-      gap 6px;
-      max-width 400px;
-      margin 10px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 400px;
+      margin: 10px auto;
     }
     #quiz-answers button {
-      width 100%;
-      justify-content center;
-      display inline-flex;
+      width: 100%;
+      justify-content: center;
+      display: inline-flex;
     }
 
-     Gioco 6 Mangia la Frutta 
+    /* Gioco 6: Mangia la Frutta */
     #fruit-area {
-      position relative;
-      width 100%;
-      max-width 420px;
-      height 270px;
-      margin 12px auto 0;
-      border-radius 22px;
-      background linear-gradient(180deg, #ffe9e3, #fff3d8);
-      border 2px solid #ff7f50;
-      overflow hidden;
-      box-shadow inset 0 0 18px rgba(0,0,0,0.06);
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      height: 270px;
+      margin: 12px auto 0;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffe9e3, #fff3d8);
+      border: 2px solid #ff7f50;
+      overflow: hidden;
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.06);
     }
     #basket {
-      position absolute;
-      bottom 12px;
-      width 80px;
-      height 40px;
-      border-radius 14px;
-      background #ff7f50;
-      display flex;
-      align-items center;
-      justify-content center;
-      color white;
-      font-size 1.4rem;
-      box-shadow 0 5px 10px rgba(0,0,0,0.25);
+      position: absolute;
+      bottom: 12px;
+      width: 80px;
+      height: 40px;
+      border-radius: 14px;
+      background: #ff7f50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.4rem;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.25);
     }
     .fruit {
-      position absolute;
-      top -30px;
-      width 32px;
-      height 32px;
-      display flex;
-      align-items center;
-      justify-content center;
-      font-size 1.5rem;
+      position: absolute;
+      top: -30px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
     }
 
-     Gioco 7 Forme 
+    /* Gioco 7: Forme */
     #shapes-area {
-      display flex;
-      justify-content center;
-      gap 30px;
-      margin 14px 0 8px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 14px 0 8px;
     }
     .shape {
-      width 86px;
-      height 86px;
-      position relative;
-      cursor pointer;
+      width: 86px;
+      height: 86px;
+      position: relative;
+      cursor: pointer;
     }
     .circle {
-      border-radius 50%;
-      background #ff6b6b;
-      box-shadow 0 8px 14px rgba(0,0,0,0.3);
+      border-radius: 50%;
+      background: #ff6b6b;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.3);
     }
     .square {
-      background #4ecdc4;
-      border-radius 18px;
-      box-shadow 0 8px 14px rgba(0,0,0,0.3);
+      background: #4ecdc4;
+      border-radius: 18px;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.3);
     }
     .triangle {
-      width 0;
-      height 0;
-      border-left 43px solid transparent;
-      border-right 43px solid transparent;
-      border-bottom 86px solid #ffe66d;
-      margin-top 0;
-      filter drop-shadow(0 8px 14px rgba(0,0,0,0.3));
+      width: 0;
+      height: 0;
+      border-left: 43px solid transparent;
+      border-right: 43px solid transparent;
+      border-bottom: 86px solid #ffe66d;
+      margin-top: 0;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,0.3));
     }
     .shape-label {
-      position absolute;
-      bottom -20px;
-      width 100%;
-      text-align center;
-      font-size 0.75rem;
-      color #555;
-      text-shadow 0 1px 0 #fff;
+      position: absolute;
+      bottom: -20px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #555;
+      text-shadow: 0 1px 0 #fff;
     }
 
-     Gioco 8 Xilofono 
+    /* Gioco 8: Xilofono */
     #xilo-area {
-      display flex;
-      flex-direction column;
-      align-items center;
-      gap 7px;
-      margin 12px 0 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      margin: 12px 0 4px;
     }
     .xilo-bar {
-      width 80%;
-      max-width 420px;
-      height 34px;
-      border-radius 16px;
-      background linear-gradient(90deg, #4e7cff, #9f7eff);
-      display flex;
-      align-items center;
-      justify-content center;
-      font-size 0.95rem;
-      color white;
-      cursor pointer;
-      user-select none;
-      box-shadow 0 7px 12px rgba(0,0,0,0.25);
+      width: 80%;
+      max-width: 420px;
+      height: 34px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, #4e7cff, #9f7eff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 7px 12px rgba(0,0,0,0.25);
     }
-    .xilo-barnth-child(2) { background linear-gradient(90deg, #ff6b6b, #ff9f1c); }
-    .xilo-barnth-child(3) { background linear-gradient(90deg, #7ed957, #4ecdc4); }
-    .xilo-barnth-child(4) { background linear-gradient(90deg, #ffe66d, #ff9f1c); }
-    .xilo-barnth-child(5) { background linear-gradient(90deg, #ff9f1c, #ff6b81); }
-    .xilo-barnth-child(6) { background linear-gradient(90deg, #6a5acd, #9f7eff); }
-    .xilo-barnth-child(7) { background linear-gradient(90deg, #4ecdc4, #2ab7ca); }
-    .xilo-barnth-child(8) { background linear-gradient(90deg, #ff6b6b, #ff9f1c); }
+    .xilo-bar:nth-child(2) { background: linear-gradient(90deg, #ff6b6b, #ff9f1c); }
+    .xilo-bar:nth-child(3) { background: linear-gradient(90deg, #7ed957, #4ecdc4); }
+    .xilo-bar:nth-child(4) { background: linear-gradient(90deg, #ffe66d, #ff9f1c); }
+    .xilo-bar:nth-child(5) { background: linear-gradient(90deg, #ff9f1c, #ff6b81); }
+    .xilo-bar:nth-child(6) { background: linear-gradient(90deg, #6a5acd, #9f7eff); }
+    .xilo-bar:nth-child(7) { background: linear-gradient(90deg, #4ecdc4, #2ab7ca); }
+    .xilo-bar:nth-child(8) { background: linear-gradient(90deg, #ff6b6b, #ff9f1c); }
 
-    @media (max-width 600px) {
+    @media (max-width: 600px) {
       h1 {
-        font-size 1.9rem;
+        font-size: 1.9rem;
       }
       .game {
-        padding 14px 10px 16px;
+        padding: 14px 10px 16px;
       }
       #draw-canvas {
-        width 100%;
-        height 260px;
+        width: 100%;
+        height: 260px;
       }
     }
-  style
-head
-body
-  div class=app-container
-    div style=text-aligncenter; margin-bottom 10px;
-      div class=badge
-        🎮 spanMini Giochispan educativi • 6+
-      div
-    div
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div style="text-align:center; margin-bottom: 10px;">
+      <div class="badge">
+        🎮 <span>Mini Giochi</span> educativi • 6+
+      </div>
+    </div>
 
-    h1Mini Giochi per Bambinih1
-    p class=subtitleUna piccola raccolta di giochi colorati per allenare mente, riflessi e creatività.p
+    <h1>Mini Giochi per Bambini</h1>
+    <p class="subtitle">Una piccola raccolta di giochi colorati per allenare mente, riflessi e creatività.</p>
 
-    !-- MENU CARD --
-    div class=menu-card
-      div class=menu-titleScegli il tuo giocodiv
-      p class=small-textTocca un pulsante per aprire il gioco corrispondente.p
-      div class=menu
-        button onclick=showGame('game-catch')🎯 Acchiappa l’Animalebutton
-        button onclick=showGame('game-draw')✏️ Disegnabutton
-        button onclick=showGame('game-puzzle')🧩 Puzzle 2x2button
-        button onclick=showGame('game-memory')🧠 Memorybutton
-        button onclick=showGame('game-quiz')❓ Quizbutton
-        button onclick=showGame('game-fruit')🍎 Mangia la Fruttabutton
-        button onclick=showGame('game-shapes')🔺 Formebutton
-        button onclick=showGame('game-xilo')🎵 Xilofonobutton
-      div
-    div
+    <!-- MENU CARD -->
+    <div class="menu-card">
+      <div class="menu-title">Scegli il tuo gioco</div>
+      <p class="small-text">Tocca un pulsante per aprire il gioco corrispondente.</p>
+      <div class="menu">
+        <button onclick="showGame('game-catch')">🎯 Acchiappa l’Animale</button>
+        <button onclick="showGame('game-draw')">✏️ Disegna</button>
+        <button onclick="showGame('game-puzzle')">🧩 Puzzle 2x2</button>
+        <button onclick="showGame('game-memory')">🧠 Memory</button>
+        <button onclick="showGame('game-quiz')">❓ Quiz</button>
+        <button onclick="showGame('game-fruit')">🍎 Mangia la Frutta</button>
+        <button onclick="showGame('game-shapes')">🔺 Forme</button>
+        <button onclick="showGame('game-xilo')">🎵 Xilofono</button>
+      </div>
+    </div>
 
-    !-- GIOCO 1 ACCHIAPPA L’ANIMALE --
-    section id=game-catch class=game hidden
-      div class=centerspan class=tagRiflessispandiv
-      h2🎯 Acchiappa l’Animaleh2
-      p class=center small-textClicca l’animaletto il più veloce possibile in 30 secondi!p
-      div class=center style=margin-top 4px;
-        spanPunteggio strong id=catch-score0strongspan 
-        spanTempo strong id=catch-time30strongsspanbrbr
-        button onclick=startCatchGame()▶️ Iniziabutton
-      div
-      div id=catch-areadiv
-    section
+    <!-- GIOCO 1: ACCHIAPPA L’ANIMALE -->
+    <section id="game-catch" class="game hidden">
+      <div class="center"><span class="tag">Riflessi</span></div>
+      <h2>🎯 Acchiappa l’Animale</h2>
+      <p class="center small-text">Clicca l’animaletto il più veloce possibile in 30 secondi!</p>
+      <div class="center" style="margin-top: 4px;">
+        <span>Punteggio: <strong id="catch-score">0</strong></span> |
+        <span>Tempo: <strong id="catch-time">30</strong>s</span><br><br>
+        <button onclick="startCatchGame()">▶️ Inizia</button>
+      </div>
+      <div id="catch-area"></div>
+    </section>
 
-    !-- GIOCO 2 DRAW APP --
-    section id=game-draw class=game hidden
-      div class=centerspan class=tagCreativitàspandiv
-      h2✏️ Disegnah2
-      p class=center small-textDisegna liberamente. Funziona con mouse (PC) e dito (touch).p
-      div class=color-picker
-        div class=color-btn style=background#000000 onclick=setDrawColor('#000000')div
-        div class=color-btn style=background#ff0000 onclick=setDrawColor('#ff0000')div
-        div class=color-btn style=background#00aa00 onclick=setDrawColor('#00aa00')div
-        div class=color-btn style=background#0000ff onclick=setDrawColor('#0000ff')div
-        div class=color-btn style=background#ffa500 onclick=setDrawColor('#ffa500')div
-      div
-      div class=center style=margin-bottom 4px;
-        button onclick=clearCanvas()🧹 Cancellabutton
-      div
-      canvas id=draw-canvas width=500 height=300canvas
-    section
+    <!-- GIOCO 2: DRAW APP -->
+    <section id="game-draw" class="game hidden">
+      <div class="center"><span class="tag">Creatività</span></div>
+      <h2>✏️ Disegna</h2>
+      <p class="center small-text">Disegna liberamente. Funziona con mouse (PC) e dito (touch).</p>
+      <div class="color-picker">
+        <div class="color-btn" style="background:#000000" onclick="setDrawColor('#000000')"></div>
+        <div class="color-btn" style="background:#ff0000" onclick="setDrawColor('#ff0000')"></div>
+        <div class="color-btn" style="background:#00aa00" onclick="setDrawColor('#00aa00')"></div>
+        <div class="color-btn" style="background:#0000ff" onclick="setDrawColor('#0000ff')"></div>
+        <div class="color-btn" style="background:#ffa500" onclick="setDrawColor('#ffa500')"></div>
+      </div>
+      <div class="center" style="margin-bottom: 4px;">
+        <button onclick="clearCanvas()">🧹 Cancella</button>
+      </div>
+      <canvas id="draw-canvas" width="500" height="300"></canvas>
+    </section>
 
-    !-- GIOCO 3 PUZZLE 2x2 --
-    section id=game-puzzle class=game hidden
-      div class=centerspan class=tagLogicaspandiv
-      h2🧩 Puzzle 2x2h2
-      p class=center small-textClicca due tessere per scambiarle. Obiettivo 1, 2, 3, 4 in ordine.p
-      div class=center
-        button onclick=shufflePuzzle()🔀 Mescolabutton
-      div
-      div id=puzzle-griddiv
-      p class=center small-text id=puzzle-messagep
-    section
+    <!-- GIOCO 3: PUZZLE 2x2 -->
+    <section id="game-puzzle" class="game hidden">
+      <div class="center"><span class="tag">Logica</span></div>
+      <h2>🧩 Puzzle 2x2</h2>
+      <p class="center small-text">Clicca due tessere per scambiarle. Obiettivo: 1, 2, 3, 4 in ordine.</p>
+      <div class="center">
+        <button onclick="shufflePuzzle()">🔀 Mescola</button>
+      </div>
+      <div id="puzzle-grid"></div>
+      <p class="center small-text" id="puzzle-message"></p>
+    </section>
 
-    !-- GIOCO 4 MEMORY --
-    section id=game-memory class=game hidden
-      div class=centerspan class=tagMemoriaspandiv
-      h2🧠 Memoryh2
-      p class=center small-textTrova tutte le coppie uguali.p
-      div class=center
-        button onclick=startMemoryGame()🔁 Nuova Partitabutton
-      div
-      div id=memory-griddiv
-      p class=center small-text id=memory-messagep
-    section
+    <!-- GIOCO 4: MEMORY -->
+    <section id="game-memory" class="game hidden">
+      <div class="center"><span class="tag">Memoria</span></div>
+      <h2>🧠 Memory</h2>
+      <p class="center small-text">Trova tutte le coppie uguali.</p>
+      <div class="center">
+        <button onclick="startMemoryGame()">🔁 Nuova Partita</button>
+      </div>
+      <div id="memory-grid"></div>
+      <p class="center small-text" id="memory-message"></p>
+    </section>
 
-    !-- GIOCO 5 QUIZ --
-    section id=game-quiz class=game hidden
-      div class=centerspan class=tagConoscenzaspandiv
-      h2❓ Quiz per Bambinih2
-      p class=center small-textRispondi alle domande. Quante ne saip
-      div class=center
-        button onclick=startQuiz()▶️ Inizia Quizbutton
-      div
-      h3 id=quiz-question class=center style=min-height 40px; margin-top 12px;h3
-      div id=quiz-answersdiv
-      p class=center small-text id=quiz-scorep
-    section
+    <!-- GIOCO 5: QUIZ -->
+    <section id="game-quiz" class="game hidden">
+      <div class="center"><span class="tag">Conoscenza</span></div>
+      <h2>❓ Quiz per Bambini</h2>
+      <p class="center small-text">Rispondi alle domande. Quante ne sai?</p>
+      <div class="center">
+        <button onclick="startQuiz()">▶️ Inizia Quiz</button>
+      </div>
+      <h3 id="quiz-question" class="center" style="min-height: 40px; margin-top: 12px;"></h3>
+      <div id="quiz-answers"></div>
+      <p class="center small-text" id="quiz-score"></p>
+    </section>
 
-    !-- GIOCO 6 MANGIA LA FRUTTA --
-    section id=game-fruit class=game hidden
-      div class=centerspan class=tagCoordinazionespandiv
-      h2🍎 Mangia la Fruttah2
-      p class=center small-textMuovi il cestino con le frecce ← → e prendi la frutta, evita le bombe!p
-      div class=center style=margin-top 4px;
-        spanPunteggio strong id=fruit-score0strongspan
+    <!-- GIOCO 6: MANGIA LA FRUTTA -->
+    <section id="game-fruit" class="game hidden">
+      <div class="center"><span class="tag">Coordinazione</span></div>
+      <h2>🍎 Mangia la Frutta</h2>
+      <p class="center small-text">Muovi il cestino con le frecce ← → e prendi la frutta, evita le bombe!</p>
+      <div class="center" style="margin-top: 4px;">
+        <span>Punteggio: <strong id="fruit-score">0</strong></span>
         &nbsp;&nbsp;
-        button onclick=startFruitGame()▶️ Iniziabutton
-      div
-      div id=fruit-area
-        div id=basket🧺div
-      div
-      p class=center small-textSuggerimento tocca il riquadro per “dare il focus” prima di usare le frecce.p
-    section
+        <button onclick="startFruitGame()">▶️ Inizia</button>
+      </div>
+      <div id="fruit-area">
+        <div id="basket">🧺</div>
+      </div>
+      <p class="center small-text">Suggerimento: tocca il riquadro per “dare il focus” prima di usare le frecce.</p>
+    </section>
 
-    !-- GIOCO 7 IMPARA LE FORME --
-    section id=game-shapes class=game hidden
-      div class=centerspan class=tagForme e spaziospandiv
-      h2🔺 Impara le Formeh2
-      p class=center small-textLeggi la richiesta e clicca la forma giusta.p
-      p class=centerstrong id=shapes-questionPremi Nuova per iniziare.strongp
-      div class=center style=margin-bottom4px;
-        button onclick=newShapeQuestion()🆕 Nuovabutton
-        span style=margin-left10px;font-size0.9rem;Punti strong id=shapes-score0strongspan
-      div
-      div id=shapes-area
-        div class=shape circle onclick=chooseShape('cerchio')
-          div class=shape-labelCerchiodiv
-        div
-        div class=shape square onclick=chooseShape('quadrato')
-          div class=shape-labelQuadratodiv
-        div
-        div class=shape triangle onclick=chooseShape('triangolo')
-          div class=shape-labelTriangolodiv
-        div
-      div
-      p class=center small-text id=shapes-messagep
-    section
+    <!-- GIOCO 7: IMPARA LE FORME -->
+    <section id="game-shapes" class="game hidden">
+      <div class="center"><span class="tag">Forme e spazio</span></div>
+      <h2>🔺 Impara le Forme</h2>
+      <p class="center small-text">Leggi la richiesta e clicca la forma giusta.</p>
+      <p class="center"><strong id="shapes-question">Premi "Nuova" per iniziare.</strong></p>
+      <div class="center" style="margin-bottom:4px;">
+        <button onclick="newShapeQuestion()">🆕 Nuova</button>
+        <span style="margin-left:10px;font-size:0.9rem;">Punti: <strong id="shapes-score">0</strong></span>
+      </div>
+      <div id="shapes-area">
+        <div class="shape circle" onclick="chooseShape('cerchio')">
+          <div class="shape-label">Cerchio</div>
+        </div>
+        <div class="shape square" onclick="chooseShape('quadrato')">
+          <div class="shape-label">Quadrato</div>
+        </div>
+        <div class="shape triangle" onclick="chooseShape('triangolo')">
+          <div class="shape-label">Triangolo</div>
+        </div>
+      </div>
+      <p class="center small-text" id="shapes-message"></p>
+    </section>
 
-    !-- GIOCO 8 XILOFONO --
-    section id=game-xilo class=game hidden
-      div class=centerspan class=tagMusicaspandiv
-      h2🎵 Xilofonoh2
-      p class=center small-textClicca le barre per ascoltare le note.p
-      div id=xilo-area
-        div class=xilo-bar onclick=playNote(261)Dodiv
-        div class=xilo-bar onclick=playNote(293)Rediv
-        div class=xilo-bar onclick=playNote(329)Midiv
-        div class=xilo-bar onclick=playNote(349)Fadiv
-        div class=xilo-bar onclick=playNote(392)Soldiv
-        div class=xilo-bar onclick=playNote(440)Ladiv
-        div class=xilo-bar onclick=playNote(493)Sidiv
-        div class=xilo-bar onclick=playNote(523)Do Altodiv
-      div
-    section
-  div
+    <!-- GIOCO 8: XILOFONO -->
+    <section id="game-xilo" class="game hidden">
+      <div class="center"><span class="tag">Musica</span></div>
+      <h2>🎵 Xilofono</h2>
+      <p class="center small-text">Clicca le barre per ascoltare le note.</p>
+      <div id="xilo-area">
+        <div class="xilo-bar" onclick="playNote(261)">Do</div>
+        <div class="xilo-bar" onclick="playNote(293)">Re</div>
+        <div class="xilo-bar" onclick="playNote(329)">Mi</div>
+        <div class="xilo-bar" onclick="playNote(349)">Fa</div>
+        <div class="xilo-bar" onclick="playNote(392)">Sol</div>
+        <div class="xilo-bar" onclick="playNote(440)">La</div>
+        <div class="xilo-bar" onclick="playNote(493)">Si</div>
+        <div class="xilo-bar" onclick="playNote(523)">Do Alto</div>
+      </div>
+    </section>
+  </div>
 
-  script
-     --------- LOGICA GENERALE MENU --------- 
+  <script>
+    /* --------- LOGICA GENERALE MENU --------- */
     function showGame(gameId) {
-      document.querySelectorAll('.game').forEach(g = g.classList.add('hidden'));
+      document.querySelectorAll('.game').forEach(g => g.classList.add('hidden'));
       const game = document.getElementById(gameId);
       if (game) game.classList.remove('hidden');
-      window.scrollTo({ top 0, behavior 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-     --------- GIOCO 1 ACCHIAPPA L’ANIMALE --------- 
+    /* --------- GIOCO 1: ACCHIAPPA L’ANIMALE --------- */
     let catchScore = 0;
     let catchTime = 30;
     let catchTimerInterval = null;
@@ -587,7 +587,7 @@ body
       const target = document.createElement('div');
       target.className = 'target';
       target.textContent = '🐶';
-      target.addEventListener('click', () = {
+      target.addEventListener('click', () => {
         catchScore++;
         document.getElementById('catch-score').textContent = catchScore;
         moveTargetRandom(target);
@@ -598,17 +598,17 @@ body
       if (catchTimerInterval) clearInterval(catchTimerInterval);
       if (catchMoveInterval) clearInterval(catchMoveInterval);
 
-      catchTimerInterval = setInterval(() = {
+      catchTimerInterval = setInterval(() => {
         catchTime--;
         document.getElementById('catch-time').textContent = catchTime;
-        if (catchTime = 0) {
+        if (catchTime <= 0) {
           clearInterval(catchTimerInterval);
           clearInterval(catchMoveInterval);
-          alert('Tempo finito! Punteggio ' + catchScore);
+          alert('Tempo finito! Punteggio: ' + catchScore);
         }
       }, 1000);
 
-      catchMoveInterval = setInterval(() = {
+      catchMoveInterval = setInterval(() => {
         moveTargetRandom(target);
       }, 800);
     }
@@ -619,13 +619,13 @@ body
       const size = 70;
       const maxX = areaRect.width - size;
       const maxY = areaRect.height - size;
-      const x = Math.random()  maxX;
-      const y = Math.random()  maxY;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
       target.style.left = x + 'px';
       target.style.top = y + 'px';
     }
 
-     --------- GIOCO 2 DRAW APP --------- 
+    /* --------- GIOCO 2: DRAW APP --------- */
     const canvas = document.getElementById('draw-canvas');
     const ctx = canvas.getContext('2d');
     let drawing = false;
@@ -681,7 +681,7 @@ body
     canvas.addEventListener('touchmove', draw);
     canvas.addEventListener('touchend', endDraw);
 
-     --------- GIOCO 3 PUZZLE 2x2 --------- 
+    /* --------- GIOCO 3: PUZZLE 2x2 --------- */
     const puzzleGrid = document.getElementById('puzzle-grid');
     let puzzlePieces = [1, 2, 3, 4];
     let puzzleColors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#5f27cd'];
@@ -689,12 +689,12 @@ body
 
     function renderPuzzle() {
       puzzleGrid.innerHTML = '';
-      puzzlePieces.forEach((num, index) = {
+      puzzlePieces.forEach((num, index) => {
         const div = document.createElement('div');
         div.className = 'puzzle-piece';
         div.style.background = puzzleColors[num - 1];
         div.textContent = num;
-        div.addEventListener('click', () = onPuzzleClick(index, div));
+        div.addEventListener('click', () => onPuzzleClick(index, div));
         puzzleGrid.appendChild(div);
       });
       document.getElementById('puzzle-message').textContent = '';
@@ -721,14 +721,14 @@ body
     }
 
     function shufflePuzzle() {
-      puzzlePieces = [1,2,3,4].sort(() = Math.random() - 0.5);
+      puzzlePieces = [1,2,3,4].sort(() => Math.random() - 0.5);
       firstSelectedIndex = null;
       renderPuzzle();
       document.getElementById('puzzle-message').textContent = 'Puzzle mescolato!';
     }
     renderPuzzle();
 
-     --------- GIOCO 4 MEMORY --------- 
+    /* --------- GIOCO 4: MEMORY --------- */
     const memoryGrid = document.getElementById('memory-grid');
     let memoryValues = [];
     let memoryFirst = null;
@@ -737,19 +737,19 @@ body
 
     function startMemoryGame() {
       const icons = ['🍎','🍌','🍇','🍓'];
-      memoryValues = icons.concat(icons).sort(() = Math.random() - 0.5);
+      memoryValues = icons.concat(icons).sort(() => Math.random() - 0.5);
       memoryGrid.innerHTML = '';
       memoryFirst = null;
       memoryLock = false;
       memoryMatches = 0;
       document.getElementById('memory-message').textContent = '';
-      memoryValues.forEach((val, idx) = {
+      memoryValues.forEach((val, idx) => {
         const card = document.createElement('div');
         card.className = 'memory-card';
         card.dataset.index = idx;
         card.dataset.value = val;
-        card.textContent = '';
-        card.addEventListener('click', () = onMemoryClick(card));
+        card.textContent = '?';
+        card.addEventListener('click', () => onMemoryClick(card));
         memoryGrid.appendChild(card);
       });
     }
@@ -772,16 +772,16 @@ body
           memoryMatches++;
           document.getElementById('memory-message').textContent = 'Coppia trovata! ✅';
           memoryFirst = null;
-          if (memoryMatches === memoryValues.length  2) {
+          if (memoryMatches === memoryValues.length / 2) {
             document.getElementById('memory-message').textContent = 'Hai trovato tutte le coppie! 🎉';
           }
         } else {
           memoryLock = true;
-          setTimeout(() = {
+          setTimeout(() => {
             memoryFirst.classList.remove('revealed');
             second.classList.remove('revealed');
-            memoryFirst.textContent = '';
-            second.textContent = '';
+            memoryFirst.textContent = '?';
+            second.textContent = '?';
             memoryFirst = null;
             memoryLock = false;
           }, 700);
@@ -789,27 +789,27 @@ body
       }
     }
 
-     --------- GIOCO 5 QUIZ --------- 
+    /* --------- GIOCO 5: QUIZ --------- */
     const quizQuestions = [
       {
-        q 'Quanto fa 2 + 2',
-        answers ['3', '4', '5'],
-        correct 1
+        q: 'Quanto fa 2 + 2?',
+        answers: ['3', '4', '5'],
+        correct: 1
       },
       {
-        q 'Quale di questi è un animale',
-        answers ['Sedia', 'Cane', 'Palla'],
-        correct 1
+        q: 'Quale di questi è un animale?',
+        answers: ['Sedia', 'Cane', 'Palla'],
+        correct: 1
       },
       {
-        q 'Di che colore è il cielo sereno',
-        answers ['Blu', 'Verde', 'Rosso'],
-        correct 0
+        q: 'Di che colore è il cielo sereno?',
+        answers: ['Blu', 'Verde', 'Rosso'],
+        correct: 0
       },
       {
-        q 'Quanti giorni ci sono in una settimana',
-        answers ['5', '7', '10'],
-        correct 1
+        q: 'Quanti giorni ci sono in una settimana?',
+        answers: ['5', '7', '10'],
+        correct: 1
       }
     ];
     let quizIndex = 0;
@@ -823,20 +823,20 @@ body
     }
 
     function showQuizQuestion() {
-      if (quizIndex = quizQuestions.length) {
+      if (quizIndex >= quizQuestions.length) {
         document.getElementById('quiz-question').textContent = 'Quiz finito!';
         document.getElementById('quiz-answers').innerHTML = '';
-        document.getElementById('quiz-score').textContent = 'Punteggio ' + quizScore + '  ' + quizQuestions.length;
+        document.getElementById('quiz-score').textContent = 'Punteggio: ' + quizScore + ' / ' + quizQuestions.length;
         return;
       }
       const qObj = quizQuestions[quizIndex];
       document.getElementById('quiz-question').textContent = qObj.q;
       const answersDiv = document.getElementById('quiz-answers');
       answersDiv.innerHTML = '';
-      qObj.answers.forEach((ans, idx) = {
+      qObj.answers.forEach((ans, idx) => {
         const btn = document.createElement('button');
         btn.textContent = ans;
-        btn.onclick = () = checkQuizAnswer(idx);
+        btn.onclick = () => checkQuizAnswer(idx);
         answersDiv.appendChild(btn);
       });
     }
@@ -850,7 +850,7 @@ body
       showQuizQuestion();
     }
 
-     --------- GIOCO 6 MANGIA LA FRUTTA --------- 
+    /* --------- GIOCO 6: MANGIA LA FRUTTA --------- */
     const fruitArea = document.getElementById('fruit-area');
     const basket = document.getElementById('basket');
     let basketX = 160;
@@ -861,13 +861,13 @@ body
 
     function setBasketPosition() {
       const areaWidth = fruitArea.clientWidth;
-      if (basketX  0) basketX = 0;
-      if (basketX  areaWidth - 80) basketX = areaWidth - 80;
+      if (basketX < 0) basketX = 0;
+      if (basketX > areaWidth - 80) basketX = areaWidth - 80;
       basket.style.left = basketX + 'px';
     }
     setBasketPosition();
 
-    document.addEventListener('keydown', (e) = {
+    document.addEventListener('keydown', (e) => {
       if (document.getElementById('game-fruit').classList.contains('hidden')) return;
       if (e.key === 'ArrowLeft') {
         basketX -= 20;
@@ -879,7 +879,7 @@ body
     });
 
     function startFruitGame() {
-      fruits.forEach(f = f.element.remove());
+      fruits.forEach(f => f.element.remove());
       fruits = [];
       fruitScore = 0;
       document.getElementById('fruit-score').textContent = fruitScore;
@@ -892,31 +892,31 @@ body
     }
 
     function spawnFruit() {
-      const isBomb = Math.random()  0.2;
+      const isBomb = Math.random() < 0.2;
       const fruit = document.createElement('div');
       fruit.className = 'fruit';
-      fruit.textContent = isBomb  '💣'  '🍎';
+      fruit.textContent = isBomb ? '💣' : '🍎';
       const areaWidth = fruitArea.clientWidth;
-      const x = Math.random()  (areaWidth - 32);
+      const x = Math.random() * (areaWidth - 32);
       fruit.style.left = x + 'px';
       fruitArea.appendChild(fruit);
-      fruits.push({ element fruit, y -30, isBomb });
+      fruits.push({ element: fruit, y: -30, isBomb });
     }
 
     function updateFruits() {
       const areaHeight = fruitArea.clientHeight;
       const basketRect = basket.getBoundingClientRect();
-      fruits.forEach(obj = {
+      fruits.forEach(obj => {
         obj.y += 4;
         obj.element.style.top = obj.y + 'px';
       });
 
-      fruits = fruits.filter(obj = {
+      fruits = fruits.filter(obj => {
         const fruitRect = obj.element.getBoundingClientRect();
-        if (fruitRect.bottom = basketRect.top &&
-            fruitRect.left  basketRect.right &&
-            fruitRect.right  basketRect.left &&
-            fruitRect.bottom = basketRect.bottom + 20) {
+        if (fruitRect.bottom >= basketRect.top &&
+            fruitRect.left < basketRect.right &&
+            fruitRect.right > basketRect.left &&
+            fruitRect.bottom <= basketRect.bottom + 20) {
           obj.element.remove();
           if (obj.isBomb) {
             fruitScore -= 2;
@@ -926,7 +926,7 @@ body
           document.getElementById('fruit-score').textContent = fruitScore;
           return false;
         }
-        if (obj.y  areaHeight) {
+        if (obj.y > areaHeight) {
           obj.element.remove();
           return false;
         }
@@ -934,13 +934,13 @@ body
       });
     }
 
-     --------- GIOCO 7 FORME --------- 
+    /* --------- GIOCO 7: FORME --------- */
     let currentShapeAnswer = null;
     let shapesScore = 0;
 
     function newShapeQuestion() {
       const options = ['cerchio', 'quadrato', 'triangolo'];
-      currentShapeAnswer = options[Math.floor(Math.random()  options.length)];
+      currentShapeAnswer = options[Math.floor(Math.random() * options.length)];
       document.getElementById('shapes-question').textContent =
         'Clicca il ' + currentShapeAnswer + '!';
       document.getElementById('shapes-message').textContent = '';
@@ -958,11 +958,11 @@ body
       }
     }
 
-     --------- GIOCO 8 XILOFONO --------- 
+    /* --------- GIOCO 8: XILOFONO --------- */
     let audioCtx = null;
     function playNote(freq) {
       if (!audioCtx) {
-        audioCtx = new (window.AudioContext  window.webkitAudioContext)();
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
@@ -975,10 +975,10 @@ body
       osc.start();
       osc.stop(audioCtx.currentTime + 0.5);
     }
-  script
+  </script>
 
-  !-- PWA REGISTRA SERVICE WORKER --
-  script
+  <!-- PWA: REGISTRA SERVICE WORKER -->
+  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('sw.js')
@@ -990,6 +990,6 @@ body
           });
       });
     }
-  script
-body
-html
+  </script>
+</body>
+</html>
